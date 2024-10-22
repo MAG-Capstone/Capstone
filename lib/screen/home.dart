@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rent_umbrella_capstone/main.dart';
+import 'package:rent_umbrella_capstone/screen/login.dart';
 import 'package:rent_umbrella_capstone/screen/profile.dart';
 import 'package:rent_umbrella_capstone/screen/settings.dart';
+import 'package:rent_umbrella_capstone/screen/profile.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -144,6 +147,7 @@ class _NavBarState extends State<NavBar> {
         children: <Widget>[
           Row(
             children: [
+
               IconButton(
                 icon: const Icon(Icons.home),
                 onPressed: () => _onItemTapped(0),
@@ -161,6 +165,7 @@ class _NavBarState extends State<NavBar> {
           ),
           Row(
             children: [
+
               IconButton(
                 icon: const Icon(Icons.settings),
                  onPressed: () {
@@ -170,6 +175,19 @@ class _NavBarState extends State<NavBar> {
                   );
                 },
               ),
+              IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage())
+                  );
+                },
+              )
+            
+            
+            
+            
             ],
           ),
         ],
