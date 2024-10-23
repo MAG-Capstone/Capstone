@@ -1,5 +1,9 @@
+
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:rent_umbrella_capstone/elements/map.dart';
+import 'package:rent_umbrella_capstone/elements/qrscanner.dart';
 import 'package:rent_umbrella_capstone/main.dart';
 import 'package:rent_umbrella_capstone/screen/login.dart';
 import 'package:rent_umbrella_capstone/screen/profile.dart';
@@ -8,9 +12,10 @@ import 'package:rent_umbrella_capstone/screen/profile.dart';
 
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title,required this.camera});
 
   final String title;
+  final List<CameraDescription>  camera;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -19,6 +24,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 0; // Add selectedIndex to the parent state
+ 
+
+
 
   void _incrementCounter() {
     setState(() {
@@ -31,6 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
       _selectedIndex = index;
     });
   }
+
+
+  // 
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +89,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   FloatingActionButton CameraButton() {
     return FloatingActionButton(
-      onPressed: _incrementCounter,
+      onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QRScanner(cameras: widget.camera))
+                  );
+      },
       tooltip: 'Scan QR Code',
       child: const Icon(Icons.camera),
     );

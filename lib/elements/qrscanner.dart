@@ -1,56 +1,60 @@
 import 'package:camera/camera.dart';
-
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+late List<CameraDescription> _cameras;
+
 
 class QRScanner extends StatefulWidget {
-  _cameras = await availableCameras();
+    const QRScanner({
+    super.key,
+    required this.cameras,
+  
+  });
 
+final List<CameraDescription> cameras;
+
+  
+  
   @override
   _QRState createState() => _QRState();
 }
 
 class _QRState extends State<QRScanner> {
 
-late CameraController controller;
+ late CameraController _controller;
 
   @override
   void initState() {
+    initCamera();
     super.initState();
-    controller = CameraController(_cameras[0], ResolutionPreset.max);
-    controller.initialize().then((_) {
-      if (!mounted) {
-        return;
-      }
-      setState(() {});
-    }).catchError((Object e) {
-      if (e is CameraException) {
-        switch (e.code) {
-          case 'CameraAccessDenied':
-            // Handle access errors here.
-            break;
-          default:
-            // Handle other errors here.
-            break;
-        }
-      }
-    });
   }
-
+  
+  initCamera(){
+  _controller = CameraController(_cameras[0], ResolutionPreset.max);
+  _controller.initialize().then((_){
+    if(!mounted){
+      return;
+    }
+    setState(() {});
+  }
+  );  
+  }
   @override
-  void dispose() {
-    controller.dispose();
+  void dispose(){
+    _controller.dispose();
     super.dispose();
-  }
+}
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.value.isInitialized) {
-      return Container();
-    }
-    return MaterialApp(
-      home: CameraPreview(controller),
-    );
-  }
 
+   if(!_controller.value.isInitialized){
+    return Container();
+   }
+   else{
+    return CameraPreview(_controller);
+   }
+
+  }
 }

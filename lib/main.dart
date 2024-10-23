@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 
 import 'screen/home.dart';
-import 'screen/profile.dart';
 
  // Available Cameras
  late List<CameraDescription> _cameras;
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       //Route controls
 
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page', camera: _cameras,),
       
     );
   }
