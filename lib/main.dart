@@ -1,12 +1,19 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 
 import 'screen/home.dart';
 import 'screen/profile.dart';
 
+ // Available Cameras
+ late List<CameraDescription> _cameras;
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  _cameras = await availableCameras();
+
   runApp(const MyApp());
 }
 
@@ -17,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
+      theme: ThemeData(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         useMaterial3: true,
       ),
@@ -38,7 +45,7 @@ class MyApp extends StatelessWidget {
 
 // Pages are defined below
 
-// MAIN BODY THIS SHOULD EVENTUALLY BE REPLACED WITH A MAP OR LIST OF STUFF
+// MAIN 4Y THIS SHOULD EVENTUALLY BE REPLACED WITH A MAP OR LIST OF STUFF
 
 
 

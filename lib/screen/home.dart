@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rent_umbrella_capstone/elements/map.dart';
 import 'package:rent_umbrella_capstone/main.dart';
 import 'package:rent_umbrella_capstone/screen/login.dart';
 import 'package:rent_umbrella_capstone/screen/profile.dart';
@@ -43,7 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
       
       //body: Body(counter: _counter, selectedIndex: _selectedIndex), 
 
-      body: Body(counter: _counter, selectedIndex: _selectedIndex),
+      body: MapEl(),
+      
+      //Body(counter: _counter, selectedIndex: _selectedIndex),
 
 
       bottomNavigationBar: NavBar(
