@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'screen/home.dart';
 
- // Available Cameras
- late List<CameraDescription> _cameras;
+
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  _cameras = await availableCameras();
 
   runApp(const MyApp());
 }
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       //Route controls
 
-      home: MyHomePage(title: 'Flutter Demo Home Page', camera: _cameras,),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
       
     );
   }
